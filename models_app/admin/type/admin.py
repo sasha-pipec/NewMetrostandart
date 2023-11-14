@@ -5,4 +5,4 @@ from models_app.models import Type
 
 @admin.register(Type)
 class TypeAdmin(admin.ModelAdmin):
-    ...
+    filter_horizontal = ('subtype',)
