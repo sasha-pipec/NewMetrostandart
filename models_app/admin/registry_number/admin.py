@@ -5,7 +5,8 @@ from models_app.models import RegistryNumber
 
 @admin.register(RegistryNumber)
 class RegistryNumberAdmin(admin.ModelAdmin):
-    list_display = ('number', 'device')
-    search_fields = ('number', 'device__name',
-                     'device__type__name', 'device__type__subtype__name')
-    list_filter = ('device','device__type')
+    list_display = ('number',)
+    search_fields = ('number',)
+    list_per_page = 40
+    list_max_show_all = 100
+    show_full_result_count = True

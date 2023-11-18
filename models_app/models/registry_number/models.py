@@ -2,8 +2,7 @@ from django.db import models
 
 
 class RegistryNumber(models.Model):
-    number = models.CharField(max_length=100, verbose_name='Номер реестра')
-    device = models.ForeignKey('Device', on_delete=models.CASCADE, verbose_name='Устройство')
+    number = models.CharField(max_length=100, verbose_name='Рег номер')
 
     def __str__(self):
         return self.number

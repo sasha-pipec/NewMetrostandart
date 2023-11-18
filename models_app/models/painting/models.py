@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Painting(models.Model):
-    author = models.CharField(max_length=255, verbose_name='Автор подписи')
+    author = models.CharField(max_length=255, verbose_name='Автор росписи')
     painting = models.ImageField(upload_to='paintings/', verbose_name='Роспись')
 
     def __str__(self):

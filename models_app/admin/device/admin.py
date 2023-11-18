@@ -5,6 +5,10 @@ from models_app.models import Device
 
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
-    search_fields = ('name', 'type__name', 'type__subtype__name')
+    autocomplete_fields = ('registry_number', 'type')
+    list_display = ('name', 'registry_number', 'type')
     list_filter = ('name',)
-    filter_horizontal = ('type',)
+    search_fields = ('name', 'registry_number__number', 'type__name')
+    list_per_page = 40
+    list_max_show_all = 100
+    show_full_result_count = True

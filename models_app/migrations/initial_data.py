@@ -38,25 +38,24 @@ def initial_data_migration(first_param, second_param):
                 else:
                     added_registry(value, initial_data)
     for key in initial_data.keys():
-        device = Device.objects.create(name=key)
         if isinstance(initial_data[key], list):
-            registry_obj_list = []
+            device_list = []
             for number in initial_data[key]:
-                registry_obj_list.append(
-                    RegistryNumber(number=number, device=device)
-                )
-            RegistryNumber.objects.bulk_create(registry_obj_list)
+                device_list.append(Device(
+                    name=key,
+                    registry_number=RegistryNumber.objects.create(number=number)
+                ))
         else:
+            device_list = []
             for name in initial_data[key].keys():
                 type = Type.objects.create(name=name)
-                device.type.add(type)
-                registry_obj_list = []
                 for number in initial_data[key][name]:
-                    registry_obj_list.append(
-                        RegistryNumber(number=number, device=device)
-                    )
-                RegistryNumber.objects.bulk_create(registry_obj_list)
-
+                    device_list.append(Device(
+                        name=key,
+                        registry_number=RegistryNumber.objects.create(number=number),
+                        type=type
+                    ))
+        Device.objects.bulk_create(device_list)
 
 
 class Migration(migrations.Migration):

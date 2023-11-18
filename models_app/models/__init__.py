@@ -4,3 +4,4 @@ from models_app.models.registry_number.models import RegistryNumber
 from models_app.models.subtype.models import Subtype
 from models_app.models.type.models import Type
 from models_app.models.user.models import User
+from models_app.models.protocol.models import Protocol

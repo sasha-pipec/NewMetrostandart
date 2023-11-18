@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views import View
 
@@ -38,3 +38,8 @@ class RegistrationPageRenderView(View):
     #         email=request.POST['email']
     #     )
     #     return redirect('login')
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('home')

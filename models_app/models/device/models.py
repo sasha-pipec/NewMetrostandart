@@ -2,12 +2,12 @@ from django.db import models
 
 
 class Device(models.Model):
-    name = models.CharField(max_length=255, verbose_name='Название устройства')
-    verification_protocol = models.FileField(upload_to='protocols/', verbose_name='Протокол поверки')
-    type = models.ManyToManyField(to='Type', related_name='device', verbose_name='Тип')
+    name = models.CharField(max_length=255, verbose_name='Название')
+    registry_number = models.ForeignKey('RegistryNumber', on_delete=models.CASCADE, verbose_name='Рег номер')
+    type = models.ForeignKey('Type', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Тип')
 
     def __str__(self):
-        return self.name
+        return f"{self.name} {self.registry_number} {self.type if self.type else '--' }"
 
     class Meta:
         db_table = 'devices'

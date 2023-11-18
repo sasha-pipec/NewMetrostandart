@@ -5,4 +5,8 @@ from models_app.models import Type
 
 @admin.register(Type)
 class TypeAdmin(admin.ModelAdmin):
-    filter_horizontal = ('subtype',)
+    list_display = ('name',)
+    search_fields = ('name', 'subtype__name')
+    list_per_page = 40
+    list_max_show_all = 100
+    show_full_result_count = True
