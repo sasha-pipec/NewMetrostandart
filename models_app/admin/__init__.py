@@ -4,4 +4,5 @@ from models_app.admin.registry_number.admin import RegistryNumberAdmin
 from models_app.admin.subtype.admin import SubtypeAdmin
 from models_app.admin.type.admin import TypeAdmin
 from models_app.admin.user.admin import UserAdmin
-from models_app.admin.protocol.admin import Protocol
+from models_app.admin.protocol.admin import ProtocolAdmin
+from models_app.admin.device_protocol.admin import DeviceProtocolAdmin

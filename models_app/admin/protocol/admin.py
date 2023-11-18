@@ -5,4 +5,5 @@ from models_app.models import Protocol
 
 @admin.register(Protocol)
 class ProtocolAdmin(admin.ModelAdmin):
-    autocomplete_fields = ('device',)
+    list_display = ('name', 'file')
+    search_fields = ('name', )
